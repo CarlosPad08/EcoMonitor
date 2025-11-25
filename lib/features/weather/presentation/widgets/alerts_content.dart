@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:eco_monitor/features/weather/presentation/providers/settings_provider.dart';
 import 'package:eco_monitor/features/weather/presentation/widgets/alert_banner.dart';
 import 'package:eco_monitor/features/weather/presentation/widgets/forecast_cards.dart';
 import 'package:eco_monitor/features/weather/presentation/widgets/recommendations_section.dart';
 
-class AlertsContent extends StatelessWidget {
+class AlertsContent extends ConsumerWidget {
   const AlertsContent({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // 🔥 Lee los ajustes en tiempo real desde Riverpod
+    final settings = ref.watch(settingsProvider);
+
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -25,6 +31,8 @@ class AlertsContent extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
+
+            // Subtítulo
             Text(
               'Alertas en tiempo real',
               style: TextStyle(
@@ -35,21 +43,32 @@ class AlertsContent extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            
-            // Banner de alerta principal
-            const AlertBanner(),
+
+            // 🔥 Banner de alerta con formato dinámico
+            AlertBanner(
+              useCelsius: settings.useCelsius,
+              useHpa: settings.useHpa,
+            ),
             const SizedBox(height: 20),
-            
-            // Cards de pronóstico
-            const ForecastCards(),
+
+            // 🔥 Tarjetas de pronóstico con formato dinámico
+            ForecastCards(
+              useCelsius: settings.useCelsius,
+              useHpa: settings.useHpa,
+            ),
             const SizedBox(height: 20),
-            
-            // Sección de recomendaciones
-            const RecommendationsSection(),
-            const SizedBox(height: 100), // Espacio para navegación
+
+            // 🔥 Recomendaciones con unidades dinámicas
+            RecommendationsSection(
+              useCelsius: settings.useCelsius,
+              useHpa: settings.useHpa,
+            ),
+
+            const SizedBox(height: 100),
           ],
         ),
       ),
     );
   }
 }
+

@@ -16,7 +16,7 @@ class AlertsPage extends ConsumerWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: const SafeArea(
+        child: SafeArea(
           child: AlertsContent(),
         ),
       ),

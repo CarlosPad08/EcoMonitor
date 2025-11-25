@@ -3,10 +3,12 @@ import 'package:eco_monitor/features/weather/domain/entities/weather_data.dart';
 
 class WeatherMetricsSection extends StatelessWidget {
   final WeatherData weatherData;
+  final bool useHpa;
 
   const WeatherMetricsSection({
     super.key,
     required this.weatherData,
+    required this.useHpa,
   });
 
   @override
@@ -26,7 +28,8 @@ class WeatherMetricsSection extends StatelessWidget {
           Expanded(
             child: _buildMetricItem(
               icon: 'assets/images/presion_icono.png',
-              value: '${weatherData.pressure.toStringAsFixed(0)} hPa',
+              value:
+                  '${weatherData.pressure.toStringAsFixed(0)} ${useHpa ? "hPa" : "mmHg"}',
               label: 'Presión',
             ),
           ),
@@ -76,11 +79,11 @@ class WeatherMetricsSection extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             value,
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'Poppins',
               fontSize: 12,
               fontWeight: FontWeight.w600,
-              color: const Color(0xFF4A148C),
+              color: Color(0xFF4A148C),
             ),
             textAlign: TextAlign.center,
           ),
@@ -99,3 +102,4 @@ class WeatherMetricsSection extends StatelessWidget {
     );
   }
 }
+

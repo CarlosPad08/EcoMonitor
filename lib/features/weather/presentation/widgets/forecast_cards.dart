@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
 
 class ForecastCards extends StatelessWidget {
-  const ForecastCards({super.key});
+  final bool useCelsius;
+  final bool useHpa;
+
+  const ForecastCards({
+    super.key,
+    required this.useCelsius,
+    required this.useHpa,
+  });
+
+  String _formatTemp(int celsius) {
+  if (useCelsius) return "$celsius°C";
+
+  final f = (celsius * 9 / 5) + 32;
+  return "${f.toStringAsFixed(0)}°F";
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +26,7 @@ class ForecastCards extends StatelessWidget {
           child: _buildForecastCard(
             time: 'Ahora',
             icon: 'assets/images/solconnube.png',
-            temperature: '32°',
+            tempCelsius: 32,
             precipitation: '30%',
           ),
         ),
@@ -20,7 +35,7 @@ class ForecastCards extends StatelessWidget {
           child: _buildForecastCard(
             time: 'En 2H',
             icon: 'assets/images/solconnube.png',
-            temperature: '33°',
+            tempCelsius: 33,
             precipitation: '38%',
           ),
         ),
@@ -29,7 +44,7 @@ class ForecastCards extends StatelessWidget {
           child: _buildForecastCard(
             time: 'En 5H',
             icon: 'assets/images/solconnube.png',
-            temperature: '29°',
+            tempCelsius: 29,
             precipitation: '28%',
           ),
         ),
@@ -40,9 +55,11 @@ class ForecastCards extends StatelessWidget {
   Widget _buildForecastCard({
     required String time,
     required String icon,
-    required String temperature,
+    required int tempCelsius,
     required String precipitation,
   }) {
+    final tempText = _formatTemp(tempCelsius);
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -65,14 +82,16 @@ class ForecastCards extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
+
           Image.asset(
             icon,
             width: 32,
             height: 32,
           ),
+
           const SizedBox(height: 8),
           Text(
-            temperature,
+            tempText,
             style: TextStyle(
               fontFamily: 'Poppins',
               fontSize: 16,
@@ -80,7 +99,9 @@ class ForecastCards extends StatelessWidget {
               color: const Color(0xFF4A148C),
             ),
           ),
+
           const SizedBox(height: 4),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -105,3 +126,4 @@ class ForecastCards extends StatelessWidget {
     );
   }
 }
+

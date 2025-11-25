@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class RecommendationsSection extends StatelessWidget {
-  const RecommendationsSection({super.key});
+  final bool useCelsius;
+  final bool useHpa;
+
+  const RecommendationsSection({
+    super.key,
+    required this.useCelsius,
+    required this.useHpa,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,19 +36,19 @@ class RecommendationsSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          
+
           _buildRecommendationItem(
-            'Hidratación: Bebe agua constantemente, incluso si no tienes sed.',
+            'Hidratación: Bebe agua constantemente.',
           ),
           const SizedBox(height: 12),
-          
+
           _buildRecommendationItem(
-            'Protector solar: Aplica FPS 30 o más en toda la piel expuesta.',
+            'Protector solar: Aplica FPS 30 o más.',
           ),
           const SizedBox(height: 12),
-          
+
           _buildRecommendationItem(
-            'Ropa ligera y clara: Viste ropa holgada, de colores claros y que cubra la mayor cantidad de piel posible.',
+            'Ropa ligera y clara: Prefiere prendas frescas.',
           ),
         ],
       ),
@@ -76,3 +83,4 @@ class RecommendationsSection extends StatelessWidget {
     );
   }
 }
+

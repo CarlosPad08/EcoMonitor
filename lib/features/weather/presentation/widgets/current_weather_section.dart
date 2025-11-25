@@ -3,10 +3,12 @@ import 'package:eco_monitor/features/weather/domain/entities/weather_data.dart';
 
 class CurrentWeatherSection extends StatelessWidget {
   final WeatherData weatherData;
+  final bool useCelsius;
 
   const CurrentWeatherSection({
     super.key,
     required this.weatherData,
+    required this.useCelsius,
   });
 
   @override
@@ -23,16 +25,15 @@ class CurrentWeatherSection extends StatelessWidget {
               fontFamily: 'Poppins',
               fontSize: 18,
               fontWeight: FontWeight.w600,
-              color: const Color(0xFF4A148C), // Púrpura oscuro
+              color: const Color(0xFF4A148C),
             ),
           ),
           const SizedBox(height: 20),
           
-          // Temperatura principal e icono
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Icono del clima
+              // Icono
               Container(
                 width: 80,
                 height: 80,
@@ -48,15 +49,15 @@ class CurrentWeatherSection extends StatelessWidget {
                   ),
                 ),
               ),
-              
-              // Temperatura
+
+              // Temperatura con símbolo correcto
               Text(
-                '${weatherData.temperature.toStringAsFixed(0)}°C',
-                style: TextStyle(
+                '${weatherData.temperature.toStringAsFixed(0)}°${useCelsius ? "C" : "F"}',
+                style: const TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 48,
                   fontWeight: FontWeight.bold,
-                  color: const Color(0xFF4A148C),
+                  color: Color(0xFF4A148C),
                 ),
               ),
             ],
@@ -67,7 +68,6 @@ class CurrentWeatherSection extends StatelessWidget {
   }
 
   String _getWeatherIcon() {
-    // Lógica para determinar el icono basado en las condiciones
     if (weatherData.temperature > 30) {
       return 'assets/images/soleado.png';
     } else if (weatherData.humidity > 70) {
@@ -79,3 +79,4 @@ class CurrentWeatherSection extends StatelessWidget {
     }
   }
 }
+

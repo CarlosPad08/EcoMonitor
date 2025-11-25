@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class AlertBanner extends StatelessWidget {
-  const AlertBanner({super.key});
+  final bool useCelsius;
+  final bool useHpa;
+
+  const AlertBanner({
+    super.key,
+    required this.useCelsius,
+    required this.useHpa,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +16,7 @@ class AlertBanner extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFFF9800).withOpacity(0.9), // Naranja
+        color: const Color(0xFFFF9800).withOpacity(0.9),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: const Color(0xFFFF9800),
@@ -18,7 +25,6 @@ class AlertBanner extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // Icono de alerta
           Container(
             width: 40,
             height: 40,
@@ -33,8 +39,7 @@ class AlertBanner extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          
-          // Contenido de la alerta
+
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
