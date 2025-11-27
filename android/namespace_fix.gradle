@@ -1,0 +1,14 @@
+// This file ensures that flutter_local_notifications plugin has a namespace defined
+// to support AGP 8.0+ (which requires all Android libraries to declare a namespace)
+
+gradle.projectsEvaluated {
+    rootProject.subprojects { subproject ->
+        if (subproject.name == 'flutter_local_notifications') {
+            subproject.android {
+                if (!subproject.android.namespace) {
+                    namespace = 'com.dexterous.flutterlocalnotifications'
+                }
+            }
+        }
+    }
+}

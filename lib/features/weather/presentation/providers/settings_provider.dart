@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsModel {
   final bool isDarkMode;
@@ -28,34 +27,21 @@ class SettingsModel {
 class SettingsNotifier extends StateNotifier<SettingsModel> {
   SettingsNotifier()
       : super(SettingsModel(isDarkMode: false, useCelsius: true, useHpa: true)) {
-    _loadSettings();
-  }
-
-  Future<void> _loadSettings() async {
-    final prefs = await SharedPreferences.getInstance();
-
-    state = SettingsModel(
-      isDarkMode: prefs.getBool('dark_mode') ?? false,
-      useCelsius: prefs.getBool('use_celsius') ?? true,
-      useHpa: prefs.getBool('use_hpa') ?? true,
-    );
+    // Settings loaded in-memory; no persistent storage for now
   }
 
   Future<void> toggleDarkMode(bool value) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('dark_mode', value);
+    // TODO: Persist to SharedPreferences when re-added
     state = state.copyWith(isDarkMode: value);
   }
 
   Future<void> toggleTemperatureUnit(bool useCelsius) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('use_celsius', useCelsius);
+    // TODO: Persist to SharedPreferences when re-added
     state = state.copyWith(useCelsius: useCelsius);
   }
 
   Future<void> togglePressureUnit(bool useHpa) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('use_hpa', useHpa);
+    // TODO: Persist to SharedPreferences when re-added
     state = state.copyWith(useHpa: useHpa);
   }
 }
