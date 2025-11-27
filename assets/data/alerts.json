@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "type": "rain",
+    "title": "🌧️ Lluvia fuerte detectada en Tulúa",
+    "message": "Se ha detectado lluvia intensa en la zona centro de Tulúa. Evita desplazamientos innecesarios.",
+    "severity": "high",
+    "timestamp": "2025-11-26T09:00:00Z"
+  },
+  {
+    "id": "2",
+    "type": "uv",
+    "title": "☀️ Alta radiación solar – Evita exponerte al sol",
+    "message": "Índice UV muy alto. Usa protector solar y evita la exposición prolongada entre 10:00 y 16:00.",
+    "severity": "medium",
+    "timestamp": "2025-11-26T10:00:00Z"
+  },
+  {
+    "id": "3",
+    "type": "pressure",
+    "title": "🌬️ Cambio brusco de presión – posible tormenta",
+    "message": "La presión atmosférica ha caído bruscamente. Hay probabilidad de tormentas en las próximas horas.",
+    "severity": "high",
+    "timestamp": "2025-11-26T11:00:00Z"
+  }
+]

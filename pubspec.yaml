@@ -26,11 +26,13 @@ dependencies:
   
   # Utilidades
   intl: ^0.18.1
-  shared_preferences: ^2.2.2
   path_provider: ^2.1.1
   
   # Iconos
   cupertino_icons: ^1.0.2
+  
+  # Local notifications for displaying system tray alerts
+  flutter_local_notifications: ^17.0.0
 
 dev_dependencies:
   flutter_test:
@@ -47,6 +49,7 @@ flutter:
   assets:
     - assets/images/
     - assets/animations/
+    - assets/data/alerts.json
   
   fonts:
     - family: Poppins
