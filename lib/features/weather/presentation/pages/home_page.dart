@@ -16,6 +16,7 @@ class HomePage extends ConsumerWidget {
     final settings = ref.watch(settingsProvider);
 
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: weatherState.when(
         data: (weatherData) {
           if (weatherData.isEmpty) {

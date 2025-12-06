@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/settings_provider.dart';
+import 'theme_section.dart';
 
 class SettingsContent extends ConsumerWidget {
   const SettingsContent({super.key});
@@ -25,7 +26,7 @@ class SettingsContent extends ConsumerWidget {
                 fontFamily: 'Poppins',
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: const Color(0xFF4A148C),
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
             const SizedBox(height: 30),
@@ -39,7 +40,7 @@ class SettingsContent extends ConsumerWidget {
                 fontFamily: 'Poppins',
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: const Color(0xFF4A148C),
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
             SwitchListTile(
@@ -59,20 +60,7 @@ class SettingsContent extends ConsumerWidget {
             // ------------------------
             // SECCIÓN DE TEMA
             // ------------------------
-            Text(
-              "Tema",
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xFF4A148C),
-              ),
-            ),
-            SwitchListTile(
-              title: const Text("Modo oscuro"),
-              value: settings.isDarkMode,
-              onChanged: notifier.toggleDarkMode,
-            ),
+            const ThemeSection(),
             const SizedBox(height: 30),
 
             // ------------------------
@@ -84,11 +72,11 @@ class SettingsContent extends ConsumerWidget {
                 fontFamily: 'Poppins',
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: const Color(0xFF4A148C),
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
             const SizedBox(height: 10),
-            _placeholderBox("Configuración de notificaciones próximamente"),
+            _placeholderBox(context, "Configuración de notificaciones próximamente"),
             const SizedBox(height: 30),
 
             // ------------------------
@@ -100,11 +88,11 @@ class SettingsContent extends ConsumerWidget {
                 fontFamily: 'Poppins',
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: const Color(0xFF4A148C),
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
             const SizedBox(height: 10),
-            _placeholderBox("Configuración de alertas próximamente"),
+            _placeholderBox(context, "Configuración de alertas próximamente"),
             const SizedBox(height: 100), // Espacio para navegación
           ],
         ),
@@ -115,18 +103,22 @@ class SettingsContent extends ConsumerWidget {
   // ------------------------
   // WIDGET ESTÉTICO PARA PLACEHOLDERS
   // ------------------------
-  Widget _placeholderBox(String text) {
+  Widget _placeholderBox(BuildContext context, String text) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.purple.withOpacity(0.1),
+        color: colorScheme.primary.withOpacity(0.1),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: const Color(0xFF4A148C)),
+        border: Border.all(color: colorScheme.primary),
       ),
       child: Text(
         text,
-        style: const TextStyle(fontFamily: 'Poppins'),
+        style: TextStyle(
+          fontFamily: 'Poppins',
+          color: colorScheme.onSurface,
+        ),
       ),
     );
   }

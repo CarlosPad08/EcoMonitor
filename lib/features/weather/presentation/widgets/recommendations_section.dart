@@ -12,14 +12,15 @@ class RecommendationsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.2),
+        color: colorScheme.surface.withOpacity(0.5),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: Colors.white.withOpacity(0.3),
+          color: colorScheme.outline.withOpacity(0.3),
           width: 1,
         ),
       ),
@@ -32,22 +33,25 @@ class RecommendationsSection extends StatelessWidget {
               fontFamily: 'Poppins',
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: const Color(0xFF4A148C),
+              color: colorScheme.onSurface,
             ),
           ),
           const SizedBox(height: 16),
 
           _buildRecommendationItem(
+            context,
             'Hidratación: Bebe agua constantemente.',
           ),
           const SizedBox(height: 12),
 
           _buildRecommendationItem(
+            context,
             'Protector solar: Aplica FPS 30 o más.',
           ),
           const SizedBox(height: 12),
 
           _buildRecommendationItem(
+            context,
             'Ropa ligera y clara: Prefiere prendas frescas.',
           ),
         ],
@@ -55,7 +59,8 @@ class RecommendationsSection extends StatelessWidget {
     );
   }
 
-  Widget _buildRecommendationItem(String text) {
+  Widget _buildRecommendationItem(BuildContext context, String text) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -64,7 +69,7 @@ class RecommendationsSection extends StatelessWidget {
           height: 6,
           margin: const EdgeInsets.only(top: 6, right: 12),
           decoration: BoxDecoration(
-            color: const Color(0xFF4A148C),
+            color: colorScheme.primary,
             borderRadius: BorderRadius.circular(3),
           ),
         ),
@@ -74,7 +79,7 @@ class RecommendationsSection extends StatelessWidget {
             style: TextStyle(
               fontFamily: 'Poppins',
               fontSize: 14,
-              color: const Color(0xFF4A148C),
+              color: colorScheme.onSurface,
               height: 1.4,
             ),
           ),

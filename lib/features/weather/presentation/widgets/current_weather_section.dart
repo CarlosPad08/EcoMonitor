@@ -25,7 +25,7 @@ class CurrentWeatherSection extends StatelessWidget {
               fontFamily: 'Poppins',
               fontSize: 18,
               fontWeight: FontWeight.w600,
-              color: const Color(0xFF4A148C),
+              color: Theme.of(context).colorScheme.onSurface,
             ),
           ),
           const SizedBox(height: 20),
@@ -38,7 +38,7 @@ class CurrentWeatherSection extends StatelessWidget {
                 width: 80,
                 height: 80,
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
+                  color: Theme.of(context).colorScheme.surface.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Center(
@@ -53,11 +53,11 @@ class CurrentWeatherSection extends StatelessWidget {
               // Temperatura con símbolo correcto
               Text(
                 '${weatherData.temperature.toStringAsFixed(0)}°${useCelsius ? "C" : "F"}',
-                style: const TextStyle(
+                style: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 48,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF4A148C),
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
             ],

@@ -20,7 +20,7 @@ class FavoritesContent extends StatelessWidget {
                 fontFamily: 'Poppins',
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: const Color(0xFF4A148C),
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
             const SizedBox(height: 20),

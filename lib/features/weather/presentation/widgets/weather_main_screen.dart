@@ -51,10 +51,16 @@ class WeatherMainScreen extends ConsumerWidget {
     );
 
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/fondo.png'),
+          image: const AssetImage('assets/images/fondo.png'),
           fit: BoxFit.cover,
+          colorFilter: Theme.of(context).brightness == Brightness.dark
+              ? ColorFilter.mode(
+                  Colors.black.withOpacity(0.4),
+                  BlendMode.darken,
+                )
+              : null,
         ),
       ),
       child: Scaffold(

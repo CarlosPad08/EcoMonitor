@@ -36,7 +36,7 @@ class EcoMonitorApp extends ConsumerWidget {
       darkTheme: AppTheme.darkTheme,
 
       /// 🌙 Cambio dinámico según configuración del usuario
-      themeMode: settings.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      themeMode: settings.themeMode,
 
       debugShowCheckedModeBanner: false,
       home: const HomePage(),

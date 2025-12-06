@@ -34,65 +34,70 @@ class _NeighborhoodSelectorState extends State<NeighborhoodSelector> {
                 }
               });
             },
-            child: Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-              decoration: BoxDecoration(
-                color: isSelected 
-                    ? const Color(0xFF4A148C).withOpacity(0.2)
-                    : Colors.white.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: isSelected 
-                      ? const Color(0xFF4A148C)
-                      : Colors.white.withOpacity(0.3),
-                  width: isSelected ? 2 : 1,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 4,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  // Icono de ubicación
-                  Icon(
-                    Icons.location_on,
+            child: Builder(
+              builder: (context) {
+                final colorScheme = Theme.of(context).colorScheme;
+                return Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  decoration: BoxDecoration(
                     color: isSelected 
-                        ? const Color(0xFF4A148C)
-                        : Colors.white.withOpacity(0.7),
-                    size: 24,
-                  ),
-                  const SizedBox(width: 12),
-                  
-                  // Nombre del barrio
-                  Expanded(
-                    child: Text(
-                      neighborhood,
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: isSelected 
-                            ? const Color(0xFF4A148C)
-                            : Colors.white,
-                      ),
+                        ? colorScheme.primary.withOpacity(0.2)
+                        : colorScheme.surface.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: isSelected 
+                          ? colorScheme.primary
+                          : colorScheme.outline.withOpacity(0.3),
+                      width: isSelected ? 2 : 1,
                     ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 4,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
                   ),
-                  
-                  // Icono de selección
-                  Icon(
-                    isSelected ? Icons.check_circle : Icons.radio_button_unchecked,
-                    color: isSelected 
-                        ? const Color(0xFF4A148C)
-                        : Colors.white.withOpacity(0.7),
-                    size: 24,
+                  child: Row(
+                    children: [
+                      // Icono de ubicación
+                      Icon(
+                        Icons.location_on,
+                        color: isSelected 
+                            ? colorScheme.primary
+                            : colorScheme.onSurface.withOpacity(0.7),
+                        size: 24,
+                      ),
+                      const SizedBox(width: 12),
+                      
+                      // Nombre del barrio
+                      Expanded(
+                        child: Text(
+                          neighborhood,
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: isSelected 
+                                ? colorScheme.primary
+                                : colorScheme.onSurface,
+                          ),
+                        ),
+                      ),
+                      
+                      // Icono de selección
+                      Icon(
+                        isSelected ? Icons.check_circle : Icons.radio_button_unchecked,
+                        color: isSelected 
+                            ? colorScheme.primary
+                            : colorScheme.onSurface.withOpacity(0.7),
+                        size: 24,
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                );
+              },
             ),
           ),
         );

@@ -60,69 +60,74 @@ class ForecastCards extends StatelessWidget {
   }) {
     final tempText = _formatTemp(tempCelsius);
 
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: Colors.white.withOpacity(0.3),
-          width: 1,
-        ),
-      ),
-      child: Column(
-        children: [
-          Text(
-            time,
-            style: TextStyle(
-              fontFamily: 'Poppins',
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: const Color(0xFF4A148C),
+    return Builder(
+      builder: (context) {
+        final colorScheme = Theme.of(context).colorScheme;
+        return Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: colorScheme.surface.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: colorScheme.outline.withOpacity(0.3),
+              width: 1,
             ),
           ),
-          const SizedBox(height: 8),
-
-          Image.asset(
-            icon,
-            width: 32,
-            height: 32,
-          ),
-
-          const SizedBox(height: 8),
-          Text(
-            tempText,
-            style: TextStyle(
-              fontFamily: 'Poppins',
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: const Color(0xFF4A148C),
-            ),
-          ),
-
-          const SizedBox(height: 4),
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Column(
             children: [
-              Image.asset(
-                'assets/images/gota_icono_borde.png',
-                width: 12,
-                height: 12,
-              ),
-              const SizedBox(width: 4),
               Text(
-                precipitation,
+                time,
                 style: TextStyle(
                   fontFamily: 'Poppins',
-                  fontSize: 10,
-                  color: const Color(0xFF4A148C).withOpacity(0.7),
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: colorScheme.onSurface,
                 ),
+              ),
+              const SizedBox(height: 8),
+
+              Image.asset(
+                icon,
+                width: 32,
+                height: 32,
+              ),
+
+              const SizedBox(height: 8),
+              Text(
+                tempText,
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: colorScheme.onSurface,
+                ),
+              ),
+
+              const SizedBox(height: 4),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/gota_icono_borde.png',
+                    width: 12,
+                    height: 12,
+                  ),
+                  const SizedBox(width: 4),
+                  Text(
+                    precipitation,
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 10,
+                      color: colorScheme.onSurface.withOpacity(0.7),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

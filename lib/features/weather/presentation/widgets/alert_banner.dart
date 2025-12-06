@@ -12,14 +12,19 @@ class AlertBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    // Usar color naranja para alertas, adaptado al tema
+    final alertColor = Theme.of(context).brightness == Brightness.dark
+        ? Colors.orange.shade700
+        : Colors.orange.shade400;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFFF9800).withOpacity(0.9),
+        color: alertColor.withOpacity(0.9),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: const Color(0xFFFF9800),
+          color: alertColor,
           width: 2,
         ),
       ),
@@ -29,12 +34,12 @@ class AlertBanner extends StatelessWidget {
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: const Color(0xFF4A148C),
+              color: colorScheme.primary,
               borderRadius: BorderRadius.circular(20),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.warning,
-              color: Colors.white,
+              color: colorScheme.onPrimary,
               size: 24,
             ),
           ),
@@ -50,7 +55,7 @@ class AlertBanner extends StatelessWidget {
                     fontFamily: 'Poppins',
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
-                    color: const Color(0xFF4A148C),
+                    color: colorScheme.onSurface,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -59,7 +64,7 @@ class AlertBanner extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 12,
-                    color: const Color(0xFF4A148C).withOpacity(0.7),
+                    color: colorScheme.onSurface.withOpacity(0.7),
                   ),
                 ),
               ],

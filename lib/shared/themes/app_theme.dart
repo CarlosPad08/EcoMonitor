@@ -123,6 +123,53 @@ class AppTheme {
           ),
         ),
       ),
+      textTheme: const TextTheme(
+        headlineLarge: TextStyle(
+          fontFamily: 'Poppins',
+          fontSize: 32,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+        headlineMedium: TextStyle(
+          fontFamily: 'Poppins',
+          fontSize: 28,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+        headlineSmall: TextStyle(
+          fontFamily: 'Poppins',
+          fontSize: 24,
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+        ),
+        titleLarge: TextStyle(
+          fontFamily: 'Poppins',
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+        ),
+        titleMedium: TextStyle(
+          fontFamily: 'Poppins',
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: Colors.white70,
+        ),
+        bodyLarge: TextStyle(
+          fontFamily: 'Poppins',
+          fontSize: 16,
+          color: Colors.white70,
+        ),
+        bodyMedium: TextStyle(
+          fontFamily: 'Poppins',
+          fontSize: 14,
+          color: Colors.white70,
+        ),
+        bodySmall: TextStyle(
+          fontFamily: 'Poppins',
+          fontSize: 12,
+          color: Colors.white60,
+        ),
+      ),
     );
   }
 }

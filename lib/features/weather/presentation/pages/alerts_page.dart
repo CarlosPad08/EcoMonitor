@@ -9,11 +9,18 @@ class AlertsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/fondo.png'),
+            image: const AssetImage('assets/images/fondo.png'),
             fit: BoxFit.cover,
+            colorFilter: Theme.of(context).brightness == Brightness.dark
+                ? ColorFilter.mode(
+                    Colors.black.withOpacity(0.3),
+                    BlendMode.darken,
+                  )
+                : null,
           ),
         ),
         child: SafeArea(

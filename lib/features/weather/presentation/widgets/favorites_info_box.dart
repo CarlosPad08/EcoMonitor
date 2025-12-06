@@ -5,14 +5,15 @@ class FavoritesInfoBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFF4A148C).withOpacity(0.8),
+        color: colorScheme.primary.withOpacity(0.8),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: const Color(0xFF4A148C),
+          color: colorScheme.primary,
           width: 1,
         ),
       ),
@@ -21,7 +22,7 @@ class FavoritesInfoBox extends StatelessWidget {
         style: TextStyle(
           fontFamily: 'Poppins',
           fontSize: 14,
-          color: Colors.white,
+          color: colorScheme.onPrimary,
           height: 1.4,
         ),
         textAlign: TextAlign.center,
