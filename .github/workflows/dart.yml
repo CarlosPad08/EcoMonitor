@@ -24,10 +24,10 @@ jobs:
 
       - name: Analyze specific pages
         run: |
-          dart analyze EcoMonitor/lib/features/weather/presentation/pages/alerts_page.dart
-          dart analyze EcoMonitor/lib/features/weather/presentation/pages/favorites_page.dart
-          dart analyze EcoMonitor/lib/features/weather/presentation/pages/home_page.dart
-          dart analyze EcoMonitor/lib/features/weather/presentation/pages/settings_page.dart
+          dart analyze lib/features/weather/presentation/pages/alerts_page.dart
+          dart analyze lib/features/weather/presentation/pages/favorites_page.dart
+          dart analyze lib/features/weather/presentation/pages/home_page.dart
+          dart analyze lib/features/weather/presentation/pages/settings_page.dart
 
       - name: Full project analysis
         run: flutter analyze
@@ -37,4 +37,5 @@ jobs:
 
       - name: Try to build debug APK (sanity check)
         run: flutter build apk --debug
+
 
