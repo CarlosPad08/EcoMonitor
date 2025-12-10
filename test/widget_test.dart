@@ -40,6 +40,9 @@ void main() {
       ),
     );
 
+    
+    await tester.pumpAndSettle(const Duration(seconds: 3));
+
     expect(find.byType(HomePage), findsOneWidget);
   });
 
@@ -55,3 +58,4 @@ void main() {
     expect(find.byType(SettingsPage), findsOneWidget);
   });
 }
+
